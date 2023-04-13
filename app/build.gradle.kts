@@ -1,7 +1,3 @@
-import com.android.build.gradle.BaseExtension
-import org.jetbrains.kotlin.gradle.plugin.KaptExtension
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
-
 plugins {
     kotlin("kapt")
     alias(libs.plugins.com.android.application)
@@ -59,6 +55,8 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.dagger)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     kapt(libs.dagger.compiler)
     implementation(libs.rxjava)
     implementation(libs.glide)
@@ -87,8 +85,10 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation("androidx.activity:activity-compose:1.6.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
     implementation("androidx.compose.runtime:runtime-rxjava2")
+
+//    implementation("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.3")
 
 
     testImplementation(libs.junit)
