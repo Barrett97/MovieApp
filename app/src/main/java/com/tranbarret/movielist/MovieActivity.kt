@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.tranbarret.movielist.databinding.MainActivityBinding
 import com.tranbarret.movielist.network.TheMovieDbApiKeyInterceptor
-import com.tranbarret.movielist.network.TheMovieDbService
+import com.tranbarret.movielist.network.MovieApi
 import com.tranbarret.movielist.util.Lawg
 import kotlinx.coroutines.launch
 import okhttp3.Cache
@@ -36,14 +36,14 @@ class MovieActivity : AppCompatActivity() {
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(TheMovieDbService::class.java)
+            .create(MovieApi::class.java)
 
         binding.call.setOnClickListener {
             lifecycleScope.launch {
                 val response = retrofit.getPopularMovies(1)
-                Lawg.i(response.code().toString())
-                Lawg.i(response.isSuccessful.toString())
-                Lawg.i(response.body().toString())
+//                Lawg.i(response.code().toString())
+//                Lawg.i(response.isSuccessful.toString())
+//                Lawg.i(response.body().toString())
             }
         }
     }

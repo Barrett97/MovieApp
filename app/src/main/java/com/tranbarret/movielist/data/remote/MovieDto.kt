@@ -1,13 +1,18 @@
-package com.tranbarret.movielist.model
+package com.tranbarret.movielist.data.remote
 
-data class Movie(
+import com.tranbarret.movielist.domain.models.Genre
+import com.tranbarret.movielist.domain.models.ProductionCompany
+import com.tranbarret.movielist.domain.models.ProductionCountry
+import com.tranbarret.movielist.domain.models.SpokenLanguage
+
+data class MovieDto(
+    val id: Int,
     val adult: Boolean,
     val backdrop_path: String,
     val belongs_to_collection: Any?,
     val budget: Int,
     val genres: List<Genre>,
     val homepage: String,
-    val id: Int,
     val imdb_id: String,
     val original_language: String,
     val original_title: String,

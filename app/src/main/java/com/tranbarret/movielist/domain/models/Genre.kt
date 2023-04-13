@@ -1,4 +1,4 @@
-package com.tranbarret.movielist.model
+package com.tranbarret.movielist.domain.models
 
 data class Genre(
     val id: Int,

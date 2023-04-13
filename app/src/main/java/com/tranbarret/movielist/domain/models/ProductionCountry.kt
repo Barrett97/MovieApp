@@ -1,4 +1,4 @@
-package com.tranbarret.movielist.model
+package com.tranbarret.movielist.domain.models
 
 data class ProductionCountry(
     val iso_3166_1: String,
