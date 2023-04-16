@@ -10,11 +10,6 @@
         android:name="com.tranbarret.movielist.ui.MovieListFragment"
         android:label="popular_fragment"
         tools:layout="@layout/movie_list">
-
-    </fragment>
-
-    <fragment>
-
     </fragment>
 
 </navigation>

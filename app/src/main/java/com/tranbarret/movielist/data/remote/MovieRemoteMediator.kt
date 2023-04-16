@@ -8,7 +8,6 @@ import androidx.room.withTransaction
 import com.tranbarret.movielist.data.local.MovieDatabase
 import com.tranbarret.movielist.data.local.MovieEntity
 import com.tranbarret.movielist.data.mappers.toEntity
-import com.tranbarret.movielist.data.mappers.toMovie
 import com.tranbarret.movielist.network.MovieApi
 import retrofit2.HttpException
 import java.io.IOException
@@ -68,4 +67,18 @@ class MovieRemoteMediator @Inject constructor(
             MediatorResult.Error(e)
         }
     }
+
+
+//    override fun loadSingle(
+//        loadType: LoadType,
+//        state: PagingState<Int, MovieEntity>
+//    ): Single<MediatorResult> {
+//        val position = params.key ?: 1
+//
+//        return service.popularMovieRx(apiKey, position, locale.language)
+//            .subscribeOn(Schedulers.io())
+//            .map { mapper.transform(it, locale) }
+//            .map { toLoadResult(it, position) }
+//            .onErrorReturn { LoadResult.Error(it) }
+//    }
 }

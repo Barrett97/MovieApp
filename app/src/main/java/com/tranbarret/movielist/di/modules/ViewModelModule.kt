@@ -16,16 +16,19 @@ import kotlin.reflect.KClass
 @MapKey
 internal annotation class ViewModelKey(val value: KClass<out ViewModel>)
 
-//@AssistedModule
 @Module
 abstract class ViewModelModule {
 
     @Binds
-    internal abstract fun bindViewModelFactory(factory: ViewModelFactory) : ViewModelProvider.Factory
+    internal abstract fun bindViewModelFactory(
+        factory: ViewModelFactory
+    ) : ViewModelProvider.Factory
 
     @Binds
     @IntoMap
     @ViewModelKey(MovieListViewModel::class)
-    internal abstract fun movieListViewModel(viewModel: MovieListViewModel) : ViewModel
+    internal abstract fun movieListViewModel(
+        viewModel: MovieListViewModel
+    ) : ViewModel
 
 }

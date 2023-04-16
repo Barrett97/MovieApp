@@ -1,38 +1,59 @@
 package com.tranbarret.movielist
 
 import android.app.Application
-import com.tranbarret.movielist.di.DaggerMovieListAppComponent
-import com.tranbarret.movielist.di.MovieListAppComponent
+import com.tranbarret.movielist.di.ApplicationComponent
+import com.tranbarret.movielist.di.DaggerApplicationComponent
+import com.tranbarret.movielist.util.Lawg
 
 class MovieApplication : Application() {
 
-    companion object {
-        private var instance: MovieApplication? = null
-        fun getInstance() = instance
-            ?: throw IllegalStateException("Called getInstance before application was created")
-    }
-
     init {
+        Lawg.i("----------------------------- APP STARTED -----------------------------")
         instance = this
     }
 
-    private var myComponent: MovieListAppComponent? = null
+    companion object {
 
-    fun getMovieListAppComponent(): MovieListAppComponent {
-        val component = myComponent
-        if (component == null) {
-            createMovieListAppComponent().apply {
-                myComponent = this
-                return this
-            }
-        } else {
-            return component
-        }
+        private var instance : MovieApplication? = null
+        fun getInstance() = instance ?: throw IllegalStateException("Called getInstance before application was created")
     }
 
-    private fun createMovieListAppComponent(): MovieListAppComponent {
-        return DaggerMovieListAppComponent
-            .builder()
+    val appComponent: ApplicationComponent = DaggerApplicationComponent.builder()
+            .application(this)
+            .context(this)
             .build()
-    }
+
+//    companion object {
+//        internal val component: ApplicationComponent = DaggerApplicationComponent.builder().build()
+//    }
+
+//    companion object {
+//        private var instance: MovieApplication? = null
+//        fun getInstance() = instance
+//            ?: throw IllegalStateException("Called getInstance before application was created")
+//    }
+//
+//    init {
+//        instance = this
+//    }
+//
+//    private var myComponent: ApplicationComponent? = null
+//
+//    fun getAppComponent(): ApplicationComponent {
+//        val component = myComponent
+//        if (component == null) {
+//            createApplicationComponent().apply {
+//                myComponent = this
+//                return this
+//            }
+//        } else {
+//            return component
+//        }
+//    }
+//
+//    private fun createApplicationComponent(): ApplicationComponent {
+//        return DaggerApplicationComponent
+//            .builder()
+//            .build()
+//    }
  }

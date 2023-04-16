@@ -1,12 +1,12 @@
 package com.tranbarret.movielist.ui
 
-import com.tranbarret.movielist.network.MovieApi
-import retrofit2.Retrofit
+import com.tranbarret.movielist.domain.MoviesRepository
+import com.tranbarret.movielist.domain.models.Movie
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
-import javax.inject.Named
 
-class GetPopularMoviesUseCase @Inject constructor(
-    @Named("movies") private val retrofit: Retrofit,
-    private val movieApi: MovieApi
-) {
-}
+//class GetPopularMoviesUseCase @Inject constructor(
+//    private val moviesRepository: MoviesRepository
+//) {
+//    suspend fun invoke() : Flow<Movie> = moviesRepository.getPopularMovies()
+//}
