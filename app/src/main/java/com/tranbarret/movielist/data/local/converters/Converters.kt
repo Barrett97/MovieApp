@@ -9,20 +9,11 @@ import java.util.Arrays
 
 class Converters {
 
-    @TypeConverter
-    fun genresToString(genres: ArrayList<Genre>) : String {
-//        var value = ""
-//
-//        for (genre in genres.genres)
-//            value += "$genre,"
-//
-//        return value
-        return genres.toString()
-    }
-    @TypeConverter
-    fun stringToGenre(string: String) : ArrayList<Genre> {
-//        val genres = string.split("\\s*,\\s*")
-//        return Genres(genres)
-        return listOf<Genre>(string.split(","))
-    }
+//    @TypeConverter
+//    fun genresToString(genres: ArrayList<Genre>) : String {
+//        return genres.toString()
+//    }
+//    @TypeConverter
+//    fun stringToGenre(string: String) : ArrayList<Genre> {
+//    }
 }

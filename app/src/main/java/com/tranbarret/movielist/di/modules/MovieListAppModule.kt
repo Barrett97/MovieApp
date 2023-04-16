@@ -15,6 +15,7 @@ import com.tranbarret.movielist.network.MovieApi
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -27,9 +28,13 @@ class MovieListAppModule {
             .build()
 
     @Provides
-    fun provideRetrofit(): Retrofit =
+    fun provideMoshiConverterFactory(): MoshiConverterFactory = MoshiConverterFactory.create()
+
+    @Provides
+    fun provideRetrofit(moshiConverterFactory: MoshiConverterFactory): Retrofit =
         Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl("https://api.themoviedb.org/")
+            .addConverterFactory(moshiConverterFactory)
             .build()
 
     @Provides

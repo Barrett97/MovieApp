@@ -13,16 +13,10 @@ import com.tranbarret.movielist.domain.models.Genre
             parentColumns = ["id"],
             childColumns = ["movie_id"],
             onDelete = ForeignKey.CASCADE
-        ),
-        ForeignKey(
-            entity = GenreEntity::class,
-            parentColumns = ["id"],
-            childColumns = ["genre_id"],
-            onDelete = ForeignKey.CASCADE
         )
     ]
 )
 data class MovieGenreEntity(
     val movie_id: Int,
-    val genre_id: GenreEntity
+    val genre: String
 )
