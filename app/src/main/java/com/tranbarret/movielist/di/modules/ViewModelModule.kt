@@ -1,10 +1,9 @@
 package com.tranbarret.movielist.di.modules
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.squareup.inject.assisted.dagger2.AssistedModule
+import com.tranbarret.movielist.AssistedSavedStateViewModelFactory
 import com.tranbarret.movielist.ui.MovieListViewModel
-import com.tranbarret.movielist.ViewModelFactory
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -16,19 +15,12 @@ import kotlin.reflect.KClass
 @MapKey
 internal annotation class ViewModelKey(val value: KClass<out ViewModel>)
 
-@Module
+@AssistedModule
+@Module(includes = [AssistedInject_ViewModelModule::class])
 abstract class ViewModelModule {
-
-    @Binds
-    internal abstract fun bindViewModelFactory(
-        factory: ViewModelFactory
-    ) : ViewModelProvider.Factory
-
     @Binds
     @IntoMap
     @ViewModelKey(MovieListViewModel::class)
-    internal abstract fun movieListViewModel(
-        viewModel: MovieListViewModel
-    ) : ViewModel
-
+    abstract fun bindVMFactory(factory: MovieListViewModel.Factory) : AssistedSavedStateViewModelFactory<out ViewModel>
 }
+

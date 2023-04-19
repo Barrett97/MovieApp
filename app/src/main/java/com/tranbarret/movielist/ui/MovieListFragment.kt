@@ -8,36 +8,39 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.tranbarret.movielist.InjectingSavedStateViewModelFactory
 import com.tranbarret.movielist.MovieApplication
-import com.tranbarret.movielist.ViewModelFactory
-import com.tranbarret.movielist.databinding.MovieListBinding
+import com.tranbarret.movielist.util.Lawg
 import javax.inject.Inject
 
 class MovieListFragment : Fragment() {
 
+    @Inject
+    lateinit var abstractFactory: InjectingSavedStateViewModelFactory
+    private lateinit var viewModel: MovieListViewModel
 
-//    @Inject
-//    internal lateinit var viewModelFactory: ViewModelProvider.Factory
-//    private val viewModel by viewModels<MovieListViewModel> { viewModelFactory }
-//    @Inject
-//    lateinit var viewModel: MovieListViewModel
-//    private val viewModel: MovieListViewModel by viewModels {
-//        ViewModelFactory()
-//    }
+//    private val movieListViewModel by viewModel { component.homeViewModelFactory.create(it) }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        MovieApplication.getInstance().appComponent.inject(this)
 //        val viewModel = ViewModelProvider(this, ViewModelFactory<MovieListViewModel>().create(MovieListViewModel::class.java))[MovieListViewModel::class.java]
 //        MovieApplication.getInstance().getMovieListAppComponent().inject(this)
-//        viewModel.moviePagingFlow
+//        viewModel.bool
+//        val args = bundleOf("s" to 2)
+        val test = savedInstanceState?.getString("key1")
+        Lawg.i(test.toString())
+        val factory = abstractFactory.create(this, null)
+        viewModel = ViewModelProvider(this, factory)[MovieListViewModel::class.java]
+
 
         return ComposeView(requireContext()).apply {
             setContent {
@@ -50,5 +53,11 @@ class MovieListFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        viewModel.saveState()
+        outState.putString("key1", "value1")
     }
 }

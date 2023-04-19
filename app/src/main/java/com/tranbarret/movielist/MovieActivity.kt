@@ -24,13 +24,13 @@ class MovieActivity : AppCompatActivity() {
     private var _binding: MainActivityBinding? = null
     private val binding get() = _binding!!
     @Inject
-    internal lateinit var viewModelFactory: ViewModelProvider.Factory
-    private lateinit var viewModel: MovieListViewModel
+    lateinit var abstractFactory: InjectingSavedStateViewModelFactory
+//    private lateinit var viewModel: MovieListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         MovieApplication.getInstance().appComponent.inject(this)
-        viewModel = ViewModelProvider(this, viewModelFactory)[MovieListViewModel::class.java]
+//        viewModel = ViewModelProvider(this, viewModelFactory)[MovieListViewModel::class.java]
 //        MovieApplication.getInstance().getMovieListAppComponent().inject(this)
 //        var appContext: MovieApplication
 //        appContext.appComponent.inject(this)

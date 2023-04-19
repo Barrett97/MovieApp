@@ -20,6 +20,13 @@ android {
         buildConfigField("String", "API_KEY", api_key)
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // groovy
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+//            }
+//        }
     }
 
     buildTypes {
@@ -46,7 +53,9 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.2"
     }
-
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
