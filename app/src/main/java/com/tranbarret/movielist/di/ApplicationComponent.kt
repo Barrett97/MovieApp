@@ -2,8 +2,12 @@ package com.tranbarret.movielist.di
 
 import android.app.Application
 import android.content.Context
+import android.net.Network
 import com.tranbarret.movielist.MovieActivity
+import com.tranbarret.movielist.MovieApplication
+import com.tranbarret.movielist.di.modules.DispatcherModule
 import com.tranbarret.movielist.di.modules.MovieListAppModule
+import com.tranbarret.movielist.di.modules.NetworkModule
 import com.tranbarret.movielist.di.modules.ViewModelModule
 import com.tranbarret.movielist.ui.MovieListFragment
 import com.tranbarret.movielist.ui.MovieListViewModel
@@ -15,13 +19,11 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [
     MovieListAppModule::class,
-//    NetworkModule::class,
-//    FragmentModule::class,
     ViewModelModule::class,
+    NetworkModule::class,
+    DispatcherModule::class
 ])
 interface ApplicationComponent {
-
-    val movieListViewModel: MovieListViewModel.Factory
     @Component.Builder
     interface Builder {
         fun build(): ApplicationComponent

@@ -2,6 +2,7 @@ package com.tranbarret.movielist.di.modules
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.squareup.moshi.Moshi
 import com.tranbarret.movielist.MovieApplication
 import com.tranbarret.movielist.network.MovieApi
 import com.tranbarret.movielist.network.TheMovieDbApiKeyInterceptor
@@ -11,6 +12,7 @@ import okhttp3.Cache
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Inject
 import javax.inject.Named
 import javax.inject.Singleton
@@ -29,23 +31,27 @@ class NetworkModule {
 
     @Provides
     @Singleton
+    fun provideMoshi() : Moshi = Moshi.Builder().build()
+
+    @Provides
+    @Singleton
     fun provideNetworkInterceptor() : TheMovieDbApiKeyInterceptor =
         TheMovieDbApiKeyInterceptor()
 
     @Provides
     @Singleton
     fun provideOkHttp(
-        application: MovieApplication,
+//        application: MovieApplication,
         theMovieDbApiKeyInterceptor: TheMovieDbApiKeyInterceptor
     ) : OkHttpClient = OkHttpClient.Builder()
-            .cache(Cache(application.cacheDir, 5*1024*1024L))
+//            .cache(Cache(application.cacheDir, 5*1024*1024L))
             .addNetworkInterceptor(theMovieDbApiKeyInterceptor)
             .build()
 
     @Provides
     @Singleton
-    @Named("movies")
     fun provideMovieRetrofit(
+        moshi: Moshi,
         gson: Gson,
         client: OkHttpClient
     ) : Retrofit = Retrofit.Builder()

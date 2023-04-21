@@ -16,7 +16,7 @@ interface MovieApi
     suspend fun getMovie() : Response<Movie>
 
     @GET("/3/movie/popular")
-    suspend fun getPopularMovies(@Query("page") page: Int) : MovieListPaged
+    suspend fun getPopularMovies(@Query("page") page: Int) : Response<MovieListPaged>
 
     @GET("/3/movie/top_rated")
     suspend fun getTopRatedMovies(@Query("page") page: Int) : MovieListPaged

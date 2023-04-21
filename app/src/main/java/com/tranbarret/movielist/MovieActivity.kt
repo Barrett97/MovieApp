@@ -23,8 +23,8 @@ class MovieActivity : AppCompatActivity() {
 
     private var _binding: MainActivityBinding? = null
     private val binding get() = _binding!!
-    @Inject
-    lateinit var abstractFactory: InjectingSavedStateViewModelFactory
+//    @Inject
+//    lateinit var abstractFactory: InjectingSavedStateViewModelFactory
 //    private lateinit var viewModel: MovieListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,13 +56,12 @@ class MovieActivity : AppCompatActivity() {
 //            .build()
 //            .create(MovieApi::class.java)
 //
-//        binding.call.setOnClickListener {
+//
 //            lifecycleScope.launch {
 //                val response = retrofit.getPopularMovies(1)
-////                Lawg.i(response.code().toString())
-////                Lawg.i(response.isSuccessful.toString())
-////                Lawg.i(response.body().toString())
+//                Lawg.i("Page : " + response.page.toString())
+//                Lawg.i("Size : " + response.results.size.toString())
 //            }
-//        }
+
     }
 }
