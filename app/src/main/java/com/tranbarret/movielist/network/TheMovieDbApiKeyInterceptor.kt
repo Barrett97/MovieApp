@@ -1,6 +1,5 @@
 package com.tranbarret.movielist.network
 
-import android.util.Log
 import com.tranbarret.movielist.BuildConfig
 import com.tranbarret.movielist.util.Lawg
 import okhttp3.CacheControl
@@ -22,11 +21,11 @@ class TheMovieDbApiKeyInterceptor : Interceptor {
         Lawg.i(
             String.format(
                 "Sending request %s on %s%n%s",
-                oldRequest.url(), chain.connection(), oldRequest.headers()
+                oldRequest.url, chain.connection(), oldRequest.headers
             )
         )
         val t1 = System.nanoTime()
-        val oldUrl = oldRequest.url()
+        val oldUrl = oldRequest.url
 
         val newUrl = oldUrl.newBuilder()
             .addQueryParameter("api_key", API_KEY)
@@ -50,7 +49,7 @@ class TheMovieDbApiKeyInterceptor : Interceptor {
         Lawg.i(
             String.format(
                 "Received response for %s in %.1fms%n%s",
-                response.request().url(), (t2 - t1) / 1e6, response.headers()
+                response.request.url, (t2 - t1) / 1e6, response.headers
             )
         )
 

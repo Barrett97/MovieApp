@@ -5,8 +5,6 @@ import com.tranbarret.movielist.data.mappers.toMovie
 import com.tranbarret.movielist.domain.models.Movie
 import com.tranbarret.movielist.network.MovieApi
 import com.tranbarret.movielist.util.Lawg
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(

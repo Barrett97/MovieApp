@@ -2,8 +2,6 @@ package com.tranbarret.movielist.data.local
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
-import com.tranbarret.movielist.domain.models.Genre
 
 @Entity(
     foreignKeys =

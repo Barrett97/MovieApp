@@ -1,7 +1,6 @@
 package com.tranbarret.movielist.domain
 
 import com.tranbarret.movielist.domain.models.Movie
-import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
     suspend fun getPopularMovies() : List<Movie>

@@ -1,7 +1,7 @@
 package com.tranbarret.movielist.domain.models
 
 data class Movie(
-    val id: Int?,
+    val id: Int,
     val adult: Boolean?,
     val backdropPath: String?,
 //    val belongsToCollection: Any?,
@@ -22,7 +22,7 @@ data class Movie(
 //    val spokenLanguages: List<SpokenLanguage>,
     val status: String?,
     val tagline: String?,
-    val title: String?,
+    val title: String,
     val video: Boolean?,
     val voteAverage: Double?,
     val voteCount: Int

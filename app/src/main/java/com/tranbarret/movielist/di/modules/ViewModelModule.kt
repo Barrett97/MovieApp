@@ -1,7 +1,6 @@
 package com.tranbarret.movielist.di.modules
 
 import androidx.lifecycle.ViewModel
-import com.squareup.inject.assisted.dagger2.AssistedModule
 import com.tranbarret.movielist.AssistedSavedStateViewModelFactory
 import com.tranbarret.movielist.ui.MovieListViewModel
 import dagger.Binds
@@ -15,8 +14,7 @@ import kotlin.reflect.KClass
 @MapKey
 internal annotation class ViewModelKey(val value: KClass<out ViewModel>)
 
-@AssistedModule
-@Module(includes = [AssistedInject_ViewModelModule::class])
+@Module
 abstract class ViewModelModule {
     @Binds
     @IntoMap

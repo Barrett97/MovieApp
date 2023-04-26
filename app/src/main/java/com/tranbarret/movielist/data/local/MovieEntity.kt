@@ -2,13 +2,6 @@ package com.tranbarret.movielist.data.local
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverter
-import androidx.room.TypeConverters
-import com.tranbarret.movielist.data.local.converters.Converters
-import com.tranbarret.movielist.domain.models.Genre
-import com.tranbarret.movielist.domain.models.ProductionCompany
-import com.tranbarret.movielist.domain.models.ProductionCountry
-import com.tranbarret.movielist.domain.models.SpokenLanguage
 
 @Entity
 data class MovieEntity(

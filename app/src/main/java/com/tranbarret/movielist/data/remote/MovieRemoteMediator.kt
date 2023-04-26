@@ -1,18 +1,5 @@
 package com.tranbarret.movielist.data.remote
 
-import androidx.paging.ExperimentalPagingApi
-import androidx.paging.LoadType
-import androidx.paging.PagingState
-import androidx.paging.RemoteMediator
-import androidx.room.withTransaction
-import com.tranbarret.movielist.data.local.MovieDatabase
-import com.tranbarret.movielist.data.local.MovieEntity
-import com.tranbarret.movielist.data.mappers.toEntity
-import com.tranbarret.movielist.network.MovieApi
-import retrofit2.HttpException
-import java.io.IOException
-import javax.inject.Inject
-
 //@OptIn(ExperimentalPagingApi::class)
 class MovieRemoteMediator {
 

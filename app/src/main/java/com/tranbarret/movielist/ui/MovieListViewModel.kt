@@ -3,23 +3,18 @@ package com.tranbarret.movielist.ui
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
-import androidx.paging.cachedIn
-import androidx.paging.map
-import com.squareup.inject.assisted.Assisted
-import com.squareup.inject.assisted.AssistedInject
 import com.tranbarret.movielist.AssistedSavedStateViewModelFactory
-import com.tranbarret.movielist.data.local.MovieEntity
-import com.tranbarret.movielist.data.mappers.toMovie
 import com.tranbarret.movielist.domain.MovieRepository
 import com.tranbarret.movielist.domain.models.Movie
 import com.tranbarret.movielist.util.Lawg
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class MovieListViewModel @AssistedInject constructor(
@@ -29,19 +24,20 @@ class MovieListViewModel @AssistedInject constructor(
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    @AssistedInject.Factory
+    @AssistedFactory
     interface Factory : AssistedSavedStateViewModelFactory<MovieListViewModel> {
         override fun create(savedStateHandle: SavedStateHandle) : MovieListViewModel
     }
 
-    private var _movies = MutableSharedFlow<List<Movie>>()
-    val movies = _movies.asSharedFlow()
+    private var _movies = MutableStateFlow<List<Movie>>(listOf())
+    val movies = _movies.asStateFlow()
     lateinit var movieList: List<Movie>
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
             _movies.emit(movieRepository.getPopularMovies())
             movieList = movieRepository.getPopularMovies()
+            Lawg.i("End of init")
         }
     }
 

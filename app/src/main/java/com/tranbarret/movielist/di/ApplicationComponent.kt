@@ -2,15 +2,12 @@ package com.tranbarret.movielist.di
 
 import android.app.Application
 import android.content.Context
-import android.net.Network
 import com.tranbarret.movielist.MovieActivity
-import com.tranbarret.movielist.MovieApplication
 import com.tranbarret.movielist.di.modules.DispatcherModule
 import com.tranbarret.movielist.di.modules.MovieListAppModule
 import com.tranbarret.movielist.di.modules.NetworkModule
 import com.tranbarret.movielist.di.modules.ViewModelModule
 import com.tranbarret.movielist.ui.MovieListFragment
-import com.tranbarret.movielist.ui.MovieListViewModel
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
