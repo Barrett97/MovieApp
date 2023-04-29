@@ -7,7 +7,14 @@
 
     <fragment
         android:id="@+id/popularFragment"
-        android:name="com.tranbarret.movielist.ui.MovieListFragment"
+        android:name="com.tranbarret.movielist.features.popular.MovieListFragment"
+        android:label="popular_fragment"
+        tools:layout="@layout/movie_list">
+    </fragment>
+
+    <fragment
+        android:id="@+id/savedFragment"
+        android:name="com.tranbarret.movielist.features.popular.MovieListFragment"
         android:label="popular_fragment"
         tools:layout="@layout/movie_list">
     </fragment>

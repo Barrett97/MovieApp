@@ -1,6 +1,11 @@
 package com.tranbarret.movielist.domain.models
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 data class Movie(
+    @PrimaryKey
     val id: Int,
     val adult: Boolean?,
     val backdropPath: String?,

@@ -7,7 +7,7 @@ import com.tranbarret.movielist.di.modules.DispatcherModule
 import com.tranbarret.movielist.di.modules.MovieListAppModule
 import com.tranbarret.movielist.di.modules.NetworkModule
 import com.tranbarret.movielist.di.modules.ViewModelModule
-import com.tranbarret.movielist.ui.MovieListFragment
+import com.tranbarret.movielist.features.popular.MovieListFragment
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton

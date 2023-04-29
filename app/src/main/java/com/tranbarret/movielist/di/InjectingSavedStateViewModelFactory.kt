@@ -1,4 +1,4 @@
-package com.tranbarret.movielist
+package com.tranbarret.movielist.di
 
 import android.os.Bundle
 import androidx.lifecycle.AbstractSavedStateViewModelFactory

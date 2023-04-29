@@ -1,8 +1,8 @@
 package com.tranbarret.movielist.di.modules
 
 import androidx.lifecycle.ViewModel
-import com.tranbarret.movielist.AssistedSavedStateViewModelFactory
-import com.tranbarret.movielist.ui.MovieListViewModel
+import com.tranbarret.movielist.di.AssistedSavedStateViewModelFactory
+import com.tranbarret.movielist.features.popular.MovieListViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module

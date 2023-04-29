@@ -1,4 +1,4 @@
-package com.tranbarret.movielist.ui
+package com.tranbarret.movielist.features.popular
 
 data class MovieListState(
     val isLoading: Boolean

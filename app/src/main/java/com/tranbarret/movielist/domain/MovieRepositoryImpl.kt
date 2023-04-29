@@ -13,7 +13,6 @@ class MovieRepositoryImpl @Inject constructor(
 ) : MovieRepository {
     override suspend fun getPopularMovies(): List<Movie> {
         val pagedMovies = movieApi.getPopularMovies(1)
-        Lawg.i(pagedMovies.body()?.results?.size.toString())
         val movies = pagedMovies.body()?.results
         val movieList = ArrayList<Movie>()
         if (movies != null) {
@@ -21,6 +20,7 @@ class MovieRepositoryImpl @Inject constructor(
                 movieList.add(movie.toMovie())
             }
         }
-        return movieList
+        moviesDatabase.movieDao.upsertAll(movieList)
+        return moviesDatabase.movieDao.getMovies()
     }
 }

@@ -15,5 +15,20 @@ class MovieActivity : AppCompatActivity() {
         MovieApplication.getInstance().appComponent.inject(this)
         _binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val bottomNavBar = binding.bottomNavigationView
+        bottomNavBar.setOnItemSelectedListener { menuItem ->
+            when(menuItem.itemId) {
+                R.id.popularMenu -> {
+
+                    true
+                }
+                R.id.savedMenu -> {
+
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }
